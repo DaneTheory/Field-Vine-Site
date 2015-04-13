@@ -1648,3 +1648,74 @@ video {
     background-color: #fff;
     color: #36E3A5;
 }
+
+/* =========================================
+		Return To Top Styles
+============================================ */
+/*
+a {
+  color: #e86256;
+  text-decoration: none;
+}
+*/
+
+
+.toTop {
+  display: inline-block;
+  height: 45px;
+  width: 45px;
+  position: fixed;
+  bottom: 0px;
+  right: 0;
+  z-index: 99999;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  text-indent: 100%;
+  white-space: nowrap;
+  background: rgba(50, 197, 168, 0.5) url('../images/cd-top-arrow.svg') no-repeat center 50%;
+  visibility: hidden;
+  opacity: 0;
+  -webkit-transition: opacity .4s 0s, visibility 0s .4s;
+  -moz-transition: opacity .4s 0s, visibility 0s .4s;
+  transition: opacity .4s 0s, visibility 0s .4s;
+}
+
+.toTop.toTopIsVisible, .toTop.toTopFadeOut, .no-touch .toTop:hover {
+  -webkit-transition: opacity .4s 0s, visibility 0s 0s;
+  -moz-transition: opacity .4s 0s, visibility 0s 0s;
+  transition: opacity .4s 0s, visibility 0s 0s;
+}
+
+a.toTop.toTopFadeOut.toTopIsVisible:hover {
+  background: rgba(50, 197, 168, 1) url('../images/cd-top-arrow.svg') no-repeat center 50%;
+  opacity: 1;
+}
+
+.toTop.toTopIsVisible {
+  /* the button becomes visible */
+  visibility: visible;
+  opacity: 1;
+}
+.toTop.toTopFadeOut {
+  /* if the user keeps scrolling down, the button is out of focus and becomes less visible */
+  opacity: .5;
+}
+.no-touch .toTop:hover {
+  background-color: #e86256;
+  opacity: 1;
+}
+@media only screen and (min-width: 768px) {
+  .toTop {
+    right: 0;
+    bottom: 0;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  .toTop {
+    height: 60px;
+    width: 60px;
+    right: 0;
+    bottom: 0;
+  }
+}
+

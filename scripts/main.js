@@ -5,6 +5,9 @@
 // This function starts playing the video
 // as soon as the browser determines it
 // can play the video without any buffering.
+/*
+	
+// OLD VIDEO CODE
 $(document).ready(function() {
 	var vid = document.getElementById("vid");
 		vid.oncanplaythrough = function() {	
@@ -12,6 +15,53 @@ $(document).ready(function() {
 				vid.oncanplay = vid.play();
 			}
 });		
+*/
+
+// NEW VIDEO CODE
+$(document).ready(function() {
+	
+	var vid = document.getElementById("vid");
+    
+    $(vid).on('canplaythrough', function () {
+        $(vid).attr('poster' , '').stop(true,true).fadeOut('slow');
+        $(vid).fadeIn('slow');
+             vid.oncanplay = vid.play();
+    })
+}); 
+
+
+// SCROLL TO TOP BUTTON CODE
+$(document).ready(function() {
+	
+	jQuery.easing.def = "easeInOutCubic";
+	
+	var $back_to_top = $('.toTop');
+	var scrollTopDurationFull = 2000;
+
+		$(window).scroll( function(){
+			
+			var windowHeight = $(window).height();
+			var scrollTop = $(window).scrollTop();
+			var heightWatch = scrollTop > windowHeight;
+			
+			if ( heightWatch == true ? $back_to_top.addClass('toTopIsVisible') : $back_to_top.removeClass('toTopIsVisible toTopFadeOut'));
+			
+			else if( scrollTop == 0 ) { 
+				$back_to_top.addClass('toTopFadeOut');
+			}
+		});
+
+	$back_to_top.on('click', function(event){
+		event.preventDefault();
+		$('body,html').stop(true,true).animate({
+			scrollTop: 0 ,
+		 	}, scrollTopDurationFull
+		);
+	});
+
+});
+
+
 
 $(document).ready(function() {
 	  // Fire focuspoint plugin
@@ -23,6 +73,8 @@ $(document).ready(function() {
 	  // data attr X Y cord system to map over bg image.
 	  $('.focuspoint').focusPoint();
 });
+
+
 	
 $(document).ready(function() {	
 	// Fit Text
